@@ -12,7 +12,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
         private readonly IOptions<EnvironmentOption> m_envOptions;
         private readonly ISessionProvider m_sessionProvider;
 
-        internal SessionFactory(ISessionProvider sessionProvider, IOptions<EnvironmentOption> envOptions)
+        public SessionFactory(ISessionProvider sessionProvider, IOptions<EnvironmentOption> envOptions)
         {
             m_envOptions = envOptions ?? throw new ArgumentNullException(nameof(envOptions));
             m_sessionProvider = sessionProvider ?? throw new ArgumentNullException(nameof(sessionProvider));

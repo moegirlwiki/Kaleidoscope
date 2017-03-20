@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals
 {
-    internal class EnvironmentOption
+    public class EnvironmentOption
     {
         public string Endpoint { get; set; }
     }

@@ -15,7 +15,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Pipeline
     {
         private readonly IOptions<EnvironmentOption> m_envOptions;
 
-        internal ActionPipeline(IOptions<EnvironmentOption> envOptions)
+        public ActionPipeline(IOptions<EnvironmentOption> envOptions)
         {
             m_envOptions = envOptions ?? throw new ArgumentNullException(nameof(envOptions));
         }

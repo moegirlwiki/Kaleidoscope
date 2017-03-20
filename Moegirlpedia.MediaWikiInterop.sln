@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{300FD1EE-F54
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimitiveLibraryTest", "test\PrimitiveLibraryTest\PrimitiveLibraryTest.csproj", "{D891D94C-6D31-4DCC-86B0-B64730BB3353}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D891D94C-6D31-4DCC-86B0-B64730BB3353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D891D94C-6D31-4DCC-86B0-B64730BB3353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D891D94C-6D31-4DCC-86B0-B64730BB3353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D891D94C-6D31-4DCC-86B0-B64730BB3353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +51,6 @@ Global
 		{2C3C9993-0F45-4A03-802C-CA6BDE43F543} = {B1EEDF2F-5EBE-4110-BA99-A5B51021664B}
 		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0} = {B1EEDF2F-5EBE-4110-BA99-A5B51021664B}
 		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0} = {6FAFE6FB-CB7F-4F86-91F4-5CC1EEEBE011}
+		{D891D94C-6D31-4DCC-86B0-B64730BB3353} = {6FAFE6FB-CB7F-4F86-91F4-5CC1EEEBE011}
 	EndGlobalSection
 EndGlobal

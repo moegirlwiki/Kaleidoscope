@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 {
-    internal class DefaultSessionProvider : ISessionProvider
+    public class DefaultSessionProvider : ISessionProvider
     {
         public bool IsHeaderInjectionEnabled => false;
 

@@ -67,6 +67,8 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
 
         internal IServiceScope CreateScope() => m_serviceProvider.CreateScope();
 
+        public ApiConnection CreateConnection() => new ApiConnection(this);
+
         public static ApiConnectionFactory CreateConnection(
             string endpoint, Action<IServiceCollection> addserviceAction = null,
             Action<IServiceProvider> configAction = null)
