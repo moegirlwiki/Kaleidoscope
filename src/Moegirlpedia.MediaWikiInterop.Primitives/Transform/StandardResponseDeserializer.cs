@@ -15,22 +15,26 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
         public async Task<T> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
-            if (input.Headers.ContentType?.MediaType != JsonFormatConfig.MimeType)
-                throw new ArgumentNullException("MIME type mismatch");
 
-            var content = await input.ReadAsStringAsync();
-            var jsonEntity = await Task.Factory.StartNew(() => GateKeeper.ParseJObject(content), ctkn);
+            using (input)
+            {
+                if (input.Headers.ContentType?.MediaType != JsonFormatConfig.MimeType)
+                    throw new ArgumentNullException("MIME type mismatch");
 
-            // Get Key
-            var rAttrib = typeof(T).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
-            var querySubKey = rAttrib?.Name;
+                var content = await input.ReadAsStringAsync();
+                var jsonEntity = await Task.Factory.StartNew(() => GateKeeper.ParseJObject(content), ctkn);
 
-            if (querySubKey == null) throw new InvalidOperationException("No key defined");
+                // Get Key
+                var rAttrib = typeof(T).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
+                var querySubKey = rAttrib?.Name;
 
-            var queryEntity = jsonEntity[querySubKey];
-            if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
+                if (querySubKey == null) throw new InvalidOperationException("No key defined");
 
-            return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(queryEntity.ToString()), ctkn);
+                var queryEntity = jsonEntity[querySubKey];
+                if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
+
+                return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(queryEntity.ToString()), ctkn);
+            }
         }
     }
 }

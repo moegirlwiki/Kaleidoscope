@@ -6,8 +6,8 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query
 {
     public class QueryProviderResponse<TResponse>
     {
-        TResponse Response { get; }
-        string ContinuationToken { get; }
+        public TResponse Response { get; }
+        public string ContinuationToken { get; }
 
         internal QueryProviderResponse(TResponse response, string continuationToken)
         {

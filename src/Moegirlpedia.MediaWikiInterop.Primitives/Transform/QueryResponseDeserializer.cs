@@ -14,6 +14,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
     public class QueryResponseDeserializer : IResponseDeserializer<QueryResponse>
     {
         private readonly QueryInputModel m_inputModel;
+        private const string RawContinueKey = "query-continue";
 
         public QueryResponseDeserializer(QueryInputModel inputModel)
         {
@@ -23,25 +24,30 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
         public async Task<QueryResponse> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
-            if (input.Headers.ContentType?.MediaType != JsonFormatConfig.MimeType)
-                throw new ArgumentNullException("MIME type mismatch");
 
-            var content = await input.ReadAsStringAsync();
-            var jsonEntity = await Task.Factory.StartNew(() => GateKeeper.ParseJObject(content), ctkn);
+            using (input)
+            {
+                if (input.Headers.ContentType?.MediaType != JsonFormatConfig.MimeType)
+                    throw new InvalidOperationException("MIME type mismatch");
 
-            // Get Key
-            var rAttrib = typeof(QueryResponse).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
-            var querySubKey = rAttrib?.Name;
+                var content = await input.ReadAsStringAsync();
+                var jsonEntity = await Task.Factory.StartNew(() => GateKeeper.ParseJObject(content), ctkn);
 
-            if (querySubKey == null) throw new InvalidOperationException("No key defined");
+                // Get Key
+                var rAttrib = typeof(QueryResponse).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
+                var querySubKey = rAttrib?.Name;
 
-            var queryEntity = jsonEntity[querySubKey];
-            if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
+                if (querySubKey == null) throw new InvalidOperationException("No key defined");
 
-            // Get continuation tokens
+                var queryEntity = jsonEntity[querySubKey];
+                if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
 
+                // Get continuation token
+                var continuationTokens = queryEntity[RawContinueKey];
 
-            throw new NotImplementedException();
+                // Pass to downstream
+                return new QueryResponse(m_inputModel, continuationTokens, queryEntity);
+            }
         }
     }
 }
