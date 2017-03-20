@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class ApiResponseAttribute : Attribute
     {
         public string Name { get; }

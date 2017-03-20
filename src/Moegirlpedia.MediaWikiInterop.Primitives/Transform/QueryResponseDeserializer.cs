@@ -1,18 +1,26 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals;
-using Newtonsoft.Json;
+﻿using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals;
+using System.Reflection;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
 {
-    public class StandardResponseDeserializer<T> : IResponseDeserializer<T> where T : IApiActionResponse
+    public class QueryResponseDeserializer : IResponseDeserializer<QueryResponse>
     {
-        public async Task<T> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn)
+        private readonly QueryInputModel m_inputModel;
+
+        public QueryResponseDeserializer(QueryInputModel inputModel)
+        {
+            m_inputModel = inputModel ?? throw new ArgumentNullException(nameof(inputModel));
+        }
+
+        public async Task<QueryResponse> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
             if (input.Headers.ContentType?.MediaType != JsonFormatConfig.MimeType)
@@ -22,7 +30,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
             var jsonEntity = await Task.Factory.StartNew(() => GateKeeper.ParseJObject(content), ctkn);
 
             // Get Key
-            var rAttrib = typeof(T).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
+            var rAttrib = typeof(QueryResponse).GetTypeInfo().GetCustomAttribute<ApiResponseAttribute>();
             var querySubKey = rAttrib?.Name;
 
             if (querySubKey == null) throw new InvalidOperationException("No key defined");
@@ -30,7 +38,10 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
             var queryEntity = jsonEntity[querySubKey];
             if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
 
-            return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(queryEntity.ToString()), ctkn);
+            // Get continuation tokens
+
+
+            throw new NotImplementedException();
         }
     }
 }
