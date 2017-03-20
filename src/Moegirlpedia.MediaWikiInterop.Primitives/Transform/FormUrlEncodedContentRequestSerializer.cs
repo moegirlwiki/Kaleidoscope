@@ -24,6 +24,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
                 // Intermediate Key-Value pair
                 var kvPairs = new List<KeyValuePair<string, string>>();
 
+                // Hard-code format information
+                kvPairs.Add(new KeyValuePair<string, string>("format", "json"));
+                kvPairs.Add(new KeyValuePair<string, string>("utf8", "1"));
+                kvPairs.Add(new KeyValuePair<string, string>("formatversion", "2"));
+
                 // Query all properties with attribute
                 var propertiesQuery = cType.GetProperties().Where(p => p.IsDefined(typeof(ApiParameterAttribute)));
 
