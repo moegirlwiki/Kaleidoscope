@@ -1,17 +1,29 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Linq;
 using System.Threading;
+using System.Runtime.CompilerServices;
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
 {
     public class FormUrlEncodedContentRequestSerializer<T> : IRequestSerializer<T> where T : IApiActionRequest
     {
+        private static ConditionalWeakTable<Type, PropertyInfo[]> m_propMetadataCache 
+            = new ConditionalWeakTable<Type, PropertyInfo[]>();
+
+        private static readonly IReadOnlyList<KeyValuePair<string, string>> m_formatConfig = 
+            new List<KeyValuePair<string, string>>
+            {
+                // Hard-code format information
+                new KeyValuePair<string, string>("format", "json"),
+                new KeyValuePair<string, string>("utf8", "1"),
+                new KeyValuePair<string, string>("formatversion", "2")
+            };
+
         public Task<HttpContent> SerializeRequestAsync(T content, CancellationToken ctkn = default(CancellationToken))
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
@@ -21,19 +33,26 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
                 // Intermediate type
                 var cType = typeof(T);
 
+                // Check if we have property information stored
+                PropertyInfo[] properties = null;
+
                 // Intermediate Key-Value pair
                 var kvPairs = new List<KeyValuePair<string, string>>();
-
-                // Hard-code format information
-                kvPairs.Add(new KeyValuePair<string, string>("format", "json"));
-                kvPairs.Add(new KeyValuePair<string, string>("utf8", "1"));
-                kvPairs.Add(new KeyValuePair<string, string>("formatversion", "2"));
+                // Add format config
+                kvPairs.AddRange(m_formatConfig);
 
                 // Query all properties with attribute
-                var propertiesQuery = cType.GetProperties().Where(p => p.IsDefined(typeof(ApiParameterAttribute)));
+                if (!m_propMetadataCache.TryGetValue(cType, out properties))
+                {
+                    var propertiesQuery = cType.GetProperties().Where(p => p.IsDefined(typeof(ApiParameterAttribute)));
+                    properties = propertiesQuery.ToArray();
+                    m_propMetadataCache.Add(cType, properties);
+                }
+
+                // Call path is determined, so it is not necessary to check nullref here
 
                 // Serialize properties
-                foreach (var property in propertiesQuery)
+                foreach (var property in properties)
                 {
                     // Null check
                     var pValue = property.GetValue(content);
