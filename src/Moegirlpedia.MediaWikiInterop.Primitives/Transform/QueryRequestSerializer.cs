@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+//-----------------------------------------------------------------------
+// <copyright file="QueryRequestSerializer.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using System;
 using System.Collections.Generic;

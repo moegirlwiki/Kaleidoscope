@@ -1,4 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+//-----------------------------------------------------------------------
+// <copyright file="TokenQueryTest.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders;
 using Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection;

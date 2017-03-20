@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+//-----------------------------------------------------------------------
+// <copyright file="LoginResponse.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

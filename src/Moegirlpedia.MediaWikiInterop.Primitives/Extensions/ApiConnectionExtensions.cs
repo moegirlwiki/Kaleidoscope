@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+//-----------------------------------------------------------------------
+// <copyright file="ApiConnectionExtensions.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.Extensions.DependencyInjection;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
 using System;
 

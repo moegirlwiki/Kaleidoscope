@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+//-----------------------------------------------------------------------
+// <copyright file="CamelCaseToLowerDashConverter.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using System.Text.RegularExpressions;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform

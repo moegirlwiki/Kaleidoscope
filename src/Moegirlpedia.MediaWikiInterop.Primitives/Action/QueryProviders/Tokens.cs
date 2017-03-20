@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+//-----------------------------------------------------------------------
+// <copyright file="Tokens.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Newtonsoft.Json;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders
 {

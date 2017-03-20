@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+//-----------------------------------------------------------------------
+// <copyright file="AuthManagerInfo.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;

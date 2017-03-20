@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------
+// <copyright file="CamelCaseToLowerDashConverterTest.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 

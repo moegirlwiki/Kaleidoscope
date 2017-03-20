@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+//-----------------------------------------------------------------------
+// <copyright file="LoginAction.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;

@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Exceptions;
+//-----------------------------------------------------------------------
+// <copyright file="GateKeeper.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Exceptions;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

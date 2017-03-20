@@ -1,4 +1,10 @@
-﻿using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+//-----------------------------------------------------------------------
+// <copyright file="QueryInputModel.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
 using System;
 using System.Collections.Generic;

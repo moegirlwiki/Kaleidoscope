@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.Options;
+//-----------------------------------------------------------------------
+// <copyright file="ActionPipeline.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.Extensions.Options;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;

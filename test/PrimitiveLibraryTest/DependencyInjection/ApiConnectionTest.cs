@@ -1,4 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+//-----------------------------------------------------------------------
+// <copyright file="ApiConnectionTest.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection;
 using System.Net.Http;
 using System.Threading.Tasks;

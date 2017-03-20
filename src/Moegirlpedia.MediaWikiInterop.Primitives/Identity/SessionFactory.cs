@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+//-----------------------------------------------------------------------
+// <copyright file="SessionFactory.cs" company="Project Kaleidoscope Authors">
+// Copyright (c) Moegirlsaikou Foundation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using System;
