@@ -8,9 +8,13 @@ The original MediaWiki API lives for years (even prior to modern technology). Al
 
 To address this issue, we developed this library to make development easier.
 
+### Be careful!
+
+This is an **experimental project**, which means lots of changes may happen every day. We are still working on making API calls more elegant.
+
 ### Get started
 
-You can get this library in NuGet (**TODO: Add NuGet link here**).
+Check out the source tree, and build it with .NET Core SDK (at least 1.0 RTM).
 
 ### Technology
 
