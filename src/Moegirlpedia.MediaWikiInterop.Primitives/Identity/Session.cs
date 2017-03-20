@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 {
-    public class MwSession
+    public class Session
     {
         private readonly string m_requestEndpoint;
         private readonly ISessionProvider m_sessionProvider;
@@ -13,7 +13,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 
         public Guid SessionIdentifier { get; }
 
-        internal MwSession(string requestEndpoint, ISessionProvider sessionProvider)
+        internal Session(string requestEndpoint, ISessionProvider sessionProvider)
         {
             SessionIdentifier = Guid.NewGuid();
 

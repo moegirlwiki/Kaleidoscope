@@ -18,6 +18,6 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
             m_sessionProvider = sessionProvider ?? throw new ArgumentNullException(nameof(sessionProvider));
         }
 
-        public MwSession CreateSession() => new MwSession(m_envOptions.Value.Endpoint, m_sessionProvider);
+        public Session CreateSession() => new Session(m_envOptions.Value.Endpoint, m_sessionProvider);
     }
 }
