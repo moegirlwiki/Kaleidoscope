@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
@@ -12,12 +13,14 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 
         public bool IsCookieInjectionEnabled => false;
 
-        public Task<IEnumerable<KeyValuePair<string, string>>> GetHeaderAsync(Guid sessionIdentifier)
+        public Task<IEnumerable<KeyValuePair<string, string>>> GetHeaderAsync(Guid sessionIdentifier, 
+            CancellationToken ctkn = default(CancellationToken))
         {
             throw new NotSupportedException();
         }
 
-        public Task SetCookieAsync(Guid sessionIdentifier, CookieContainer container)
+        public Task SetCookieAsync(Guid sessionIdentifier, CookieContainer container, 
+            CancellationToken ctkn = default(CancellationToken))
         {
             throw new NotSupportedException();
         }

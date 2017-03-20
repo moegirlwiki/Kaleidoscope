@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <Folder Include="Authentication\" />
-    <Folder Include="Action\" />
   </ItemGroup>
 
 </Project>

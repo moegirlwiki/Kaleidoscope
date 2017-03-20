@@ -8,6 +8,7 @@ using System.Text;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
 using System.Linq;
+using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
 {
@@ -61,6 +62,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
 
             // And always add the session factory
             m_serviceCollection.AddScoped<SessionFactory>();
+            m_serviceCollection.AddScoped<ActionPipeline>();
         }
 
         internal IServiceScope CreateScope() => m_serviceProvider.CreateScope();

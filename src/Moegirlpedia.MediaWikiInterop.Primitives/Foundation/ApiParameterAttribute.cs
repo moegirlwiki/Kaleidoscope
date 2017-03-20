@@ -10,24 +10,29 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 
         public bool IsSensitive { get; }
 
+        public bool IsAggregated { get; }
+
         internal Type CustomConverter { get; }
 
         internal bool IsFinalized { get; }
 
-        public ApiParameterAttribute(string name, bool isSensitive = false, Type customConverter = null)
+        public ApiParameterAttribute(string name, bool isSensitive = false, 
+            bool isAggregated = false, Type customConverter = null)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             IsSensitive = isSensitive;
+            IsAggregated = IsAggregated;
             
             // Validate if converter is present
             if (customConverter != null)
             {
-                if (typeof(IMultipleApiParamSerializer).IsAssignableFrom(customConverter))
+                if (typeof(IAggregatedApiParamSerializer).IsAssignableFrom(customConverter))
                 {
                     IsFinalized = false;
                 }
                 else if (typeof(IFinalizedApiParamSerializer).IsAssignableFrom(customConverter))
                 {
+                    if (IsAggregated) throw new InvalidOperationException("Aggregated property cannot use finalized converter");
                     IsFinalized = true;
                 }
                 else
@@ -36,6 +41,12 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
                 }
 
                 CustomConverter = customConverter;
+            }
+
+            // Validate aggreated property
+            if (IsAggregated && CustomConverter == null)
+            {
+                throw new InvalidOperationException("Aggreated property must use custom converter");
             }
         }
     }

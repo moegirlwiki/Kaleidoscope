@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 {
-    public interface IMultipleApiParamSerializer : IFinalizedApiParamSerializer
+    public interface IAggregatedApiParamSerializer : IFinalizedApiParamSerializer
     {
-        Dictionary<string, string> SerializeSubFields();
+        List<KeyValuePair<string, string>> SerializeAllFields(object entity);
     }
 
     public interface IFinalizedApiParamSerializer
     {
-        string SerializeFinalizedFields();
+        string SerializeFinalizedFields(object entity);
     }
 }

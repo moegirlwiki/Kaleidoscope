@@ -8,14 +8,17 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
     /// Interface for general, no response actions.
     /// </summary>
     /// <typeparam name="TRequest">Type of the request model.</typeparam>
-    public interface IApiAction<TRequest>
+    public interface IApiAction<TRequest> where TRequest : IApiActionRequest
     {
         string Name { get; }
-        IRequestSerializer<TRequest> Serializer { get; }
+        Lazy<IRequestSerializer<TRequest>> Serializer { get; }
+        TRequest Request { get; }
     }
 
-    public interface IApiAction<TRequest, TResponse> : IApiAction<TRequest>
+    public interface IApiAction<TRequest, TResponse> : IApiAction<TRequest> 
+        where TRequest : IApiActionRequest 
+        where TResponse : IApiActionResponse
     {
-        IResponseDeserializer<TResponse> Deserializer { get; }
+        Lazy<IResponseDeserializer<TResponse>> Deserializer { get; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
+using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,12 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
         {
             if (m_serviceScope == null) throw new ObjectDisposedException(nameof(ApiConnection));
             return m_serviceScope.ServiceProvider.GetRequiredService<SessionFactory>();
+        }
+
+        public ActionPipeline CreateActionPipeline()
+        {
+            if (m_serviceScope == null) throw new ObjectDisposedException(nameof(ApiConnection));
+            return m_serviceScope.ServiceProvider.GetRequiredService<ActionPipeline>();
         }
 
         #region IDisposable Support
