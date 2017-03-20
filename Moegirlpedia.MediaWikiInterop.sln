@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1EEDF2F-5EBE-4110-BA99-A5B51021664B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6FAFE6FB-CB7F-4F86-91F4-5CC1EEEBE011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moegirlpedia.MediaWikiInterop.Primitives", "src\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj", "{2C3C9993-0F45-4A03-802C-CA6BDE43F543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moegirlpedia.MediaWikiInterop.Client", "src\Moegirlpedia.MediaWikiInterop.Client\Moegirlpedia.MediaWikiInterop.Client.csproj", "{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteropClientTest", "test\InteropClientTest\InteropClientTest.csproj", "{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3C9993-0F45-4A03-802C-CA6BDE43F543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3C9993-0F45-4A03-802C-CA6BDE43F543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3C9993-0F45-4A03-802C-CA6BDE43F543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3C9993-0F45-4A03-802C-CA6BDE43F543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2C3C9993-0F45-4A03-802C-CA6BDE43F543} = {B1EEDF2F-5EBE-4110-BA99-A5B51021664B}
+		{D1FE6210-630C-47CB-8AA0-B1A47F460BE0} = {B1EEDF2F-5EBE-4110-BA99-A5B51021664B}
+		{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0} = {6FAFE6FB-CB7F-4F86-91F4-5CC1EEEBE011}
+	EndGlobalSection
+EndGlobal
