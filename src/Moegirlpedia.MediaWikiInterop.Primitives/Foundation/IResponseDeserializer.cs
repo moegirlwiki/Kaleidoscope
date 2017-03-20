@@ -9,6 +9,6 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 {
     public interface IResponseDeserializer<TResponse> where TResponse : IApiActionResponse
     {
-        Task<TResponse> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn);
+        Task<TResponse> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn = default(CancellationToken));
     }
 }

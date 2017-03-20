@@ -9,6 +9,6 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 {
     public interface IRequestSerializer<TRequest> where TRequest : IApiActionRequest
     {
-        Task<HttpContent> SerializeRequestAsync(TRequest content, CancellationToken ctkn);
+        Task<HttpContent> SerializeRequestAsync(TRequest content, CancellationToken ctkn = default(CancellationToken));
     }
 }

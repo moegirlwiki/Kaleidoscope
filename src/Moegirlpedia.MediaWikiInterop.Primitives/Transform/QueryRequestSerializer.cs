@@ -11,7 +11,8 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
 {
     public class QueryRequestSerializer : IRequestSerializer<QueryInputModel>
     {
-        public Task<HttpContent> SerializeRequestAsync(QueryInputModel content, CancellationToken ctkn)
+        public Task<HttpContent> SerializeRequestAsync(QueryInputModel content, 
+            CancellationToken ctkn = default(CancellationToken))
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
 
