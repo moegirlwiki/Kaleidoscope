@@ -7,11 +7,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B1EEDF2F-5EB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6FAFE6FB-CB7F-4F86-91F4-5CC1EEEBE011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moegirlpedia.MediaWikiInterop.Primitives", "src\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj", "{2C3C9993-0F45-4A03-802C-CA6BDE43F543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moegirlpedia.MediaWikiInterop.Primitives", "src\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj", "{2C3C9993-0F45-4A03-802C-CA6BDE43F543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moegirlpedia.MediaWikiInterop.Client", "src\Moegirlpedia.MediaWikiInterop.Client\Moegirlpedia.MediaWikiInterop.Client.csproj", "{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moegirlpedia.MediaWikiInterop.Client", "src\Moegirlpedia.MediaWikiInterop.Client\Moegirlpedia.MediaWikiInterop.Client.csproj", "{D1FE6210-630C-47CB-8AA0-B1A47F460BE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteropClientTest", "test\InteropClientTest\InteropClientTest.csproj", "{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteropClientTest", "test\InteropClientTest\InteropClientTest.csproj", "{F9F7D24F-EB88-4CFD-8EDD-AF1AB03343F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{300FD1EE-F548-4C5D-9E94-055F05A6F913}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
