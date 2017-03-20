@@ -3,9 +3,8 @@ using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
 using System;
-using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,12 +35,18 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Pipeline
             // Third-party session provider: Set cookie now
             await session.SetCookieAsync(ctkn);
 
+            // URL Builder
+            var uriBuilder = new UriBuilder(session.m_requestEndpoint)
+            {
+                Query = $"action={WebUtility.UrlEncode(action.Name)}"
+            };
+
             using (var httpClientHandler = new HttpClientHandler { CookieContainer = session.m_cookieContainer })
             using (var httpClient = new HttpClient(httpClientHandler))
             // Third-party session provider: Set header after serialization
             using (var reqContent = await session.SetHeaderAsync(
                 await action.Serializer.Value.SerializeRequestAsync(action.Request, ctkn), ctkn))
-            using (var response = await httpClient.PostAsync(session.m_requestEndpoint, reqContent, ctkn))
+            using (var response = await httpClient.PostAsync(uriBuilder.Uri, reqContent, ctkn))
             {
                 response.EnsureSuccessStatusCode();
                 return await action.Deserializer.Value.DeserializeResponseAsync(response.Content, ctkn);
@@ -63,12 +68,18 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Pipeline
             // Third-party session provider: Set cookie now
             await session.SetCookieAsync(ctkn);
 
+            // URL Builder
+            var uriBuilder = new UriBuilder(session.m_requestEndpoint)
+            {
+                Query = $"action={WebUtility.UrlEncode(action.Name)}"
+            };
+
             using (var httpClientHandler = new HttpClientHandler { CookieContainer = session.m_cookieContainer })
             using (var httpClient = new HttpClient(httpClientHandler))
             // Third-party session provider: Set header after serialization
             using (var reqContent = await session.SetHeaderAsync(
                 await action.Serializer.Value.SerializeRequestAsync(action.Request, ctkn), ctkn))
-            using (var response = await httpClient.PostAsync(session.m_requestEndpoint, reqContent, ctkn))
+            using (var response = await httpClient.PostAsync(uriBuilder.Uri, reqContent, ctkn))
             {
                 response.EnsureSuccessStatusCode();
             }
