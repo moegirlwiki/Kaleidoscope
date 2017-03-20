@@ -1,14 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Moegirlpedia.MediaWikiInterop.Primitives.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
-using System.Linq;
 using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
 {

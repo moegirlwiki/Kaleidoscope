@@ -2,8 +2,6 @@
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
 using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
 {

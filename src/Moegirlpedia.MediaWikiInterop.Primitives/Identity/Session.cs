@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,13 +23,13 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
             m_cookieContainer = new CookieContainer();
         }
 
-        public async Task SetCookieAsync(CancellationToken ctkn)
+        public async Task SetCookieAsync(CancellationToken ctkn = default(CancellationToken))
         {
             if (m_sessionProvider.IsCookieInjectionEnabled)
                 await m_sessionProvider.SetCookieAsync(SessionIdentifier, m_cookieContainer, ctkn);
         }
 
-        public async Task<HttpContent> SetHeaderAsync(HttpContent reqContent, CancellationToken ctkn)
+        public async Task<HttpContent> SetHeaderAsync(HttpContent reqContent, CancellationToken ctkn = default(CancellationToken))
         {
             if (m_sessionProvider.IsHeaderInjectionEnabled)
             {
