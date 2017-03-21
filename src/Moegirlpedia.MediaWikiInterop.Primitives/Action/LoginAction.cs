@@ -4,9 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Microsoft.Extensions.Options;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 
@@ -16,7 +17,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Action
     {
         public override string Name => "login";
 
-        public LoginAction(ActionPipeline actionPipeline) : base(actionPipeline) { }
+        public LoginAction(IOptions<EnvironmentOption> envOptions) : base(envOptions) { }
 
         protected override Func<LoginInputModel, IResponseDeserializer<LoginResponse>> DeserializerAction => 
             new Func<LoginInputModel, IResponseDeserializer<LoginResponse>>(

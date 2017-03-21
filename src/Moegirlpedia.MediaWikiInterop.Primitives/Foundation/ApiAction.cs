@@ -4,8 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Microsoft.Extensions.Options;
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
-using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -16,11 +17,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
 {
     public abstract class ApiAction<TRequest> : IApiAction<TRequest> where TRequest : IApiActionRequest
     {
-        private readonly ActionPipeline m_actionPipeline;
+        private readonly IOptions<EnvironmentOption> m_envOptions;
 
-        public ApiAction(ActionPipeline actionPipeline)
+        public ApiAction(IOptions<EnvironmentOption> envOptions)
         {
-            m_actionPipeline = actionPipeline ?? throw new ArgumentNullException(nameof(actionPipeline));
+            m_envOptions = envOptions ?? throw new ArgumentNullException(nameof(envOptions));
         }
 
         public abstract string Name { get; }
@@ -35,7 +36,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
             if (SerializerAction == null) throw new InvalidOperationException();
 
             // GateKeeper: Check sanity
-            if (session.m_requestEndpoint != m_actionPipeline.m_envOptions.Value.Endpoint)
+            if (session.m_requestEndpoint != m_envOptions.Value.Endpoint)
                 throw new InvalidOperationException("Endpoint mismatch");
 
             // Third-party session provider: Set cookie now
@@ -71,11 +72,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
         where TResponse : IApiActionResponse
     {
 
-        private readonly ActionPipeline m_actionPipeline;
+        private readonly IOptions<EnvironmentOption> m_envOptions;
 
-        public ApiAction(ActionPipeline actionPipeline)
+        public ApiAction(IOptions<EnvironmentOption> envOptions)
         {
-            m_actionPipeline = actionPipeline ?? throw new ArgumentNullException(nameof(actionPipeline));
+            m_envOptions = envOptions ?? throw new ArgumentNullException(nameof(envOptions));
         }
 
         public abstract string Name { get; }
@@ -93,7 +94,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation
             if (DeserializerAction == null) throw new InvalidOperationException();
 
             // GateKeeper: Check sanity
-            if (session.m_requestEndpoint != m_actionPipeline.m_envOptions.Value.Endpoint)
+            if (session.m_requestEndpoint != m_envOptions.Value.Endpoint)
                 throw new InvalidOperationException("Endpoint mismatch");
 
             // Third-party session provider: Set cookie now

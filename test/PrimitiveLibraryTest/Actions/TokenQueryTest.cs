@@ -8,7 +8,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders;
 using Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection;
-using System;
 using System.Threading.Tasks;
 
 namespace PrimitiveLibraryTest.Actions
@@ -23,18 +22,16 @@ namespace PrimitiveLibraryTest.Actions
         {
             var apiFactory = ApiConnectionFactory.CreateConnection(ApiEndpoint);
             using (var apiConnection = apiFactory.CreateConnection())
+            using (var session = apiConnection.CreateSession())
             {
-                var sessionFactory = apiConnection.CreateSessionFactory();
-                var actionPipe = apiConnection.CreateActionPipeline();
-                var testSession = sessionFactory.CreateSession();
 
-                var queryResponse = await actionPipe.CreateAction<QueryAction>().RunActionAsync(config =>
+                var queryResponse = await apiConnection.CreateAction<QueryAction>().RunActionAsync(config =>
                 {
                     config.AddQueryProvider(new TokenQueryProvider
                     {
                         Types = TokenQueryProvider.TokenTypes.Login
                     });
-                }, testSession);
+                }, session);
 
                 var tokenResponse = queryResponse.GetQueryTypedResponse<Tokens>();
                 Assert.IsNotNull(tokenResponse?.Response?.LoginToken);
@@ -46,23 +43,19 @@ namespace PrimitiveLibraryTest.Actions
         {
             var apiFactory = ApiConnectionFactory.CreateConnection(ApiEndpoint);
             using (var apiConnection = apiFactory.CreateConnection())
+            using (var session = apiConnection.CreateSession())
             {
-                var sessionFactory = apiConnection.CreateSessionFactory();
-                var actionPipe = apiConnection.CreateActionPipeline();
-                var testSession = sessionFactory.CreateSession();
-                var queryAction = actionPipe.CreateAction<QueryAction>();
-
                 var tokenQueryProvider = new TokenQueryProvider
                 {
                     Types = TokenQueryProvider.TokenTypes.Csrf | TokenQueryProvider.TokenTypes.Login
                 };
 
                 // Send request
-                var response = await queryAction.RunActionAsync(config =>
+                var response = await apiConnection.CreateAction<QueryAction>().RunActionAsync(config =>
                 {
                     Assert.IsNotNull(config);
                     config.AddQueryProvider(tokenQueryProvider);
-                }, testSession);
+                }, session);
 
                 var parsedResult = response.GetQueryProviderResponse(tokenQueryProvider);
 

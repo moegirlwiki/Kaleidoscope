@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Moegirlpedia.MediaWikiInterop.Primitives.Extensions;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Identity;
-using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,10 +62,6 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection
                 // Add default session provider if a 3P is not present
                 m_serviceCollection.AddScoped<ISessionProvider, DefaultSessionProvider>();
             }
-
-            // And always add the session factory
-            m_serviceCollection.AddScoped<SessionFactory>();
-            m_serviceCollection.AddScoped<ActionPipeline>();
         }
 
         internal IServiceScope CreateScope() => m_serviceProvider.CreateScope();

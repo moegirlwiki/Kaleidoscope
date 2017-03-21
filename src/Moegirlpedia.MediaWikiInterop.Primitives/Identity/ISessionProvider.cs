@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 {
-    public interface ISessionProvider
+    public interface ISessionProvider : IDisposable
     {
         bool IsHeaderInjectionEnabled { get; }
         bool IsCookieInjectionEnabled { get; }

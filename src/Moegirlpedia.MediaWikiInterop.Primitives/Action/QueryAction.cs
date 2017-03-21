@@ -4,9 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Microsoft.Extensions.Options;
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
+using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 
@@ -14,7 +15,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Action
 {
     public class QueryAction : ApiAction<QueryInputModel, QueryResponse>
     {
-        public QueryAction(ActionPipeline actionPipeline) : base(actionPipeline) { }
+        public QueryAction(IOptions<EnvironmentOption> envOptions) : base(envOptions) { }
 
         public override string Name => "query";
 

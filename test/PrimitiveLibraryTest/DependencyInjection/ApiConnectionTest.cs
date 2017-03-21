@@ -24,25 +24,12 @@ namespace PrimitiveLibraryTest.DependencyInjection
         }
 
         [TestMethod]
-        public void TestCreateConnectionInstance()
-        {
-            var apiFactory = ApiConnectionFactory.CreateConnection(ApiEndpoint);
-            using (var apiConnection = apiFactory.CreateConnection())
-            {
-                var sessionFactory = apiConnection.CreateSessionFactory();
-                var actionPipe = apiConnection.CreateActionPipeline();
-            }
-        }
-
-        [TestMethod]
         public void TestCreateSession()
         {
             var apiFactory = ApiConnectionFactory.CreateConnection(ApiEndpoint);
             using (var apiConnection = apiFactory.CreateConnection())
+            using (var session = apiConnection.CreateSession())
             {
-                var sessionFactory = apiConnection.CreateSessionFactory();
-                var session = sessionFactory.CreateSession();
-
                 Assert.AreEqual(ApiEndpoint, session.m_requestEndpoint);
                 Assert.IsNotNull(session.m_cookieContainer);
             }
@@ -53,11 +40,9 @@ namespace PrimitiveLibraryTest.DependencyInjection
         {
             var apiFactory = ApiConnectionFactory.CreateConnection(ApiEndpoint);
             using (var apiConnection = apiFactory.CreateConnection())
+            using (var session = apiConnection.CreateSession())
             using (var httpPostContent = new StringContent(""))
             {
-                var sessionFactory = apiConnection.CreateSessionFactory();
-                var session = sessionFactory.CreateSession();
-
                 Assert.AreEqual(ApiEndpoint, session.m_requestEndpoint);
                 Assert.IsNotNull(session.m_cookieContainer);
 

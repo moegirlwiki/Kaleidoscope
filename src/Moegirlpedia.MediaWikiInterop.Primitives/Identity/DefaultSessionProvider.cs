@@ -19,6 +19,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Identity
 
         public bool IsCookieInjectionEnabled => false;
 
+        public void Dispose()
+        {
+            // Nothing to dispose, just a stub here
+        }
+
         public Task<IEnumerable<KeyValuePair<string, string>>> GetHeaderAsync(Guid sessionIdentifier, 
             CancellationToken ctkn = default(CancellationToken))
         {
