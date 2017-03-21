@@ -6,30 +6,24 @@
 
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Action
 {
-    public class QueryAction : IApiAction<QueryInputModel, QueryResponse>
+    public class QueryAction : ApiAction<QueryInputModel, QueryResponse>
     {
-        private QueryInputModel m_request;
+        public QueryAction(ActionPipeline actionPipeline) : base(actionPipeline) { }
 
-        public QueryAction()
-        {
-            m_request = new QueryInputModel();
-        }
+        public override string Name => "query";
 
-        public Lazy<IResponseDeserializer<QueryResponse>> Deserializer => 
-            new Lazy<IResponseDeserializer<QueryResponse>>(() =>
-            new QueryResponseDeserializer(m_request));
+        protected override Func<QueryInputModel, IResponseDeserializer<QueryResponse>> DeserializerAction => 
+            new Func<QueryInputModel, IResponseDeserializer<QueryResponse>>(req =>
+            new QueryResponseDeserializer(req));
 
-        public string Name => "query";
-
-        public Lazy<IRequestSerializer<QueryInputModel>> Serializer => 
-            new Lazy<IRequestSerializer<QueryInputModel>>(() => 
+        protected override Func<IRequestSerializer<QueryInputModel>> SerializerAction => 
+            new Func<IRequestSerializer<QueryInputModel>>(() =>
             new QueryRequestSerializer());
-
-        public QueryInputModel Request => m_request;
     }
 }

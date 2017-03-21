@@ -6,37 +6,24 @@
 
 using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+using Moegirlpedia.MediaWikiInterop.Primitives.Pipeline;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Action
 {
-    public class LoginAction : IApiAction<LoginInputModel, LoginResponse>
+    public class LoginAction : ApiAction<LoginInputModel, LoginResponse>
     {
-        public string Name => "login";
+        public override string Name => "login";
 
-        private Lazy<IRequestSerializer<LoginInputModel>> m_serializerInternal;
-        private Lazy<IResponseDeserializer<LoginResponse>> m_deserializerInternal;
+        public LoginAction(ActionPipeline actionPipeline) : base(actionPipeline) { }
 
-        public LoginAction(LoginInputModel model)
-        {
-            Request = model ?? throw new ArgumentNullException(nameof(model));
+        protected override Func<LoginInputModel, IResponseDeserializer<LoginResponse>> DeserializerAction => 
+            new Func<LoginInputModel, IResponseDeserializer<LoginResponse>>(
+                req => new StandardResponseDeserializer<LoginResponse>());
 
-            m_serializerInternal = new Lazy<IRequestSerializer<LoginInputModel>>(() =>
-            {
-                return new FormUrlEncodedContentRequestSerializer<LoginInputModel>();
-            });
-
-            m_deserializerInternal = new Lazy<IResponseDeserializer<LoginResponse>>(() =>
-            {
-                return new StandardResponseDeserializer<LoginResponse>();
-            });
-        }
-
-        public Lazy<IRequestSerializer<LoginInputModel>> Serializer => m_serializerInternal;
-
-        public Lazy<IResponseDeserializer<LoginResponse>> Deserializer => m_deserializerInternal;
-
-        public LoginInputModel Request { get; }
+        protected override Func<IRequestSerializer<LoginInputModel>> SerializerAction =>
+            new Func<IRequestSerializer<LoginInputModel>>(() => 
+            new FormUrlEncodedContentRequestSerializer<LoginInputModel>());
     }
 }
