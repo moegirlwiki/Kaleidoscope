@@ -1,5 +1,7 @@
 # Project Kaleidscope
 
+[![Build and test status](https://ligstd.visualstudio.com/_apis/public/build/definitions/2b5d6ecb-f9d7-4f08-a878-a4bc47882749/9/badge)](https://ligstd.visualstudio.com/Project%20Kaleidoscope%20Public%20Release)
+
 Project Kaleidscope is a modern, lightweight MediaWiki API wrapper for .NET platforms (.NET Core and .NET Framework) built by Moegirlpedia. It's goal is making interoperating with MediaWiki easy and enjoyable.
 
 ### Why?
