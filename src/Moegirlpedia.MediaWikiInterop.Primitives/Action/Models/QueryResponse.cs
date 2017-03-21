@@ -26,11 +26,13 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
         // Type refers to specific response type.
         // IQueryProvider - QueryProviderAttribute, Continuation Token, Object
         private readonly Dictionary<IQueryProvider, (QueryProviderAttribute, string, object)> m_parsedEntities;
+        private readonly Dictionary<Type, (string, object)> m_typedParsedEntities;
 
         public QueryResponse(QueryInputModel queryInputModel, JToken continuationToken, JToken queryResponses)
         {
             m_continuationTokens = continuationToken;
             m_parsedEntities = new Dictionary<IQueryProvider, (QueryProviderAttribute, string, object)>();
+            m_typedParsedEntities = new Dictionary<Type, (string, object)>();
             m_responseParsed = false;
             m_inputModel = queryInputModel ?? throw new ArgumentNullException(nameof(queryInputModel));
             m_queryResponses = queryResponses ?? throw new ArgumentNullException(nameof(queryResponses));
@@ -51,6 +53,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
                 var entity = JsonConvert.DeserializeObject(entityRaw, qAttrib.ResponseType);
 
                 m_parsedEntities.Add(queryProvider, (qAttrib, contToken, entity));
+                m_typedParsedEntities.Add(qAttrib.ResponseType, (contToken, entity));
             }
 
             m_responseParsed = true;
@@ -62,6 +65,15 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
 
             return m_parsedEntities.TryGetValue(provider, out (QueryProviderAttribute, string, object) pValue) ?
                 new QueryProviderResponse<TResponse>((TResponse)pValue.Item3, pValue.Item2) :
+                null;
+        }
+
+        public QueryProviderResponse<TResponse> GetQueryTypedResponse<TResponse>()
+        {
+            if (!m_responseParsed) ParseQueryEntities();
+
+            return m_typedParsedEntities.TryGetValue(typeof(TResponse), out (string, object) pValue) ?
+                new QueryProviderResponse<TResponse>((TResponse) pValue.Item2, pValue.Item1) :
                 null;
         }
     }
