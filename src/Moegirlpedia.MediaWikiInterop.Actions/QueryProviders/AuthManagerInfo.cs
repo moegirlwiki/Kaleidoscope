@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders
+namespace Moegirlpedia.MediaWikiInterop.Actions.QueryProviders
 {
     public class AuthManagerInfo
     {

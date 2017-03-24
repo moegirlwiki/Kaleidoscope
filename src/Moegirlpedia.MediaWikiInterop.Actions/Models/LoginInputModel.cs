@@ -5,11 +5,8 @@
 //-----------------------------------------------------------------------
 
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
+namespace Moegirlpedia.MediaWikiInterop.Actions.Models
 {
     public class LoginInputModel : IApiActionRequest
     {

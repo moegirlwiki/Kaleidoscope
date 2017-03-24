@@ -4,13 +4,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Moegirlpedia.MediaWikiInterop.Actions.Query;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
+namespace Moegirlpedia.MediaWikiInterop.Actions.Models
 {
     public class QueryInputModel : IApiActionRequest
     {

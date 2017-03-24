@@ -6,7 +6,7 @@
 
 using Newtonsoft.Json;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders
+namespace Moegirlpedia.MediaWikiInterop.Actions.QueryProviders
 {
     public class Tokens
     {

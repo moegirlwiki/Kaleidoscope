@@ -4,18 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+using Moegirlpedia.MediaWikiInterop.Actions.Models;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
+using Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals;
-using System.Reflection;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
+namespace Moegirlpedia.MediaWikiInterop.Actions.Transform
 {
     public class QueryResponseDeserializer : IResponseDeserializer<QueryResponse>
     {

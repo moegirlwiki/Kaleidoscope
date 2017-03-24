@@ -4,18 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+using Moegirlpedia.MediaWikiInterop.Actions.Models;
+using Moegirlpedia.MediaWikiInterop.Actions.Query;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
+using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Reflection;
-using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
+namespace Moegirlpedia.MediaWikiInterop.Actions.Transform
 {
     public class QueryRequestSerializer : IRequestSerializer<QueryInputModel>
     {

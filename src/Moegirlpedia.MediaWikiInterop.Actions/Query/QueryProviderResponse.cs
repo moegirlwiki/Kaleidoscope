@@ -4,18 +4,14 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query
+namespace Moegirlpedia.MediaWikiInterop.Actions.Query
 {
     public class QueryProviderResponse<TResponse>
     {
         public TResponse Response { get; }
         public string ContinuationToken { get; }
 
-        internal QueryProviderResponse(TResponse response, string continuationToken)
+        public QueryProviderResponse(TResponse response, string continuationToken)
         {
             Response = response;
             ContinuationToken = continuationToken;

@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
 {
-    static class JsonFormatConfig
+    public static class JsonFormatConfig
     {
         public const string MimeType = "application/json";
 

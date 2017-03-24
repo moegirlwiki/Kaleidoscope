@@ -4,12 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Moegirlpedia.MediaWikiInterop.Actions.Query;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System.Collections.Generic;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders
+namespace Moegirlpedia.MediaWikiInterop.Actions.QueryProviders
 {
     [QueryProvider("authmanagerinfo", "meta", typeof(AuthManagerInfo))]
     public class AuthManagerQueryProvider : IQueryProvider<AuthManagerInfo>

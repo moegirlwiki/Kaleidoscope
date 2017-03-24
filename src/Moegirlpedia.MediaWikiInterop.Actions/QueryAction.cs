@@ -5,13 +5,13 @@
 //-----------------------------------------------------------------------
 
 using Microsoft.Extensions.Options;
-using Moegirlpedia.MediaWikiInterop.Primitives.Action.Models;
+using Moegirlpedia.MediaWikiInterop.Actions.Models;
+using Moegirlpedia.MediaWikiInterop.Actions.Transform;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Internals;
-using Moegirlpedia.MediaWikiInterop.Primitives.Transform;
 using System;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action
+namespace Moegirlpedia.MediaWikiInterop.Actions
 {
     public class QueryAction : ApiAction<QueryInputModel, QueryResponse>
     {

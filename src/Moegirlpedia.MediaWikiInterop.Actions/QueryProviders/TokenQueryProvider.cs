@@ -4,11 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
+using Moegirlpedia.MediaWikiInterop.Actions.Query;
 using System;
 using System.Collections.Generic;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders
+namespace Moegirlpedia.MediaWikiInterop.Actions.QueryProviders
 {
     [QueryProvider("tokens", "meta", typeof(Tokens))]
     public class TokenQueryProvider : IQueryProvider<Tokens>

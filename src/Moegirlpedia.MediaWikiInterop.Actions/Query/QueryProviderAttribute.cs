@@ -5,10 +5,8 @@
 //-----------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query
+namespace Moegirlpedia.MediaWikiInterop.Actions.Query
 {
     public class QueryProviderAttribute : Attribute
     {

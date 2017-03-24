@@ -5,8 +5,15 @@
     <Authors>Moegirlsaikou Foundation; The Little Moe New LLC</Authors>
     <Company>Moegirlsaikou Foundation; The Little Moe New LLC</Company>
     <Product>Project Kaleidoscope</Product>
-    <Description>Primitive modules for Project Kaleidoscope</Description>
-    <Copyright />
+    <Description>Primitive library that supports other Project Kaleidoscope services.</Description>
+    <Copyright>Copyright (c) 2017 Moegirlsaikou Foundation and The Little Moe New LLC. All rights reserved.</Copyright>
+    <PackageTags>MediaWiki,API,Middleware</PackageTags>
+    <PackageLicenseUrl>https://github.com/moegirlwiki/Kaleidoscope/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/moegirlwiki/Kaleidoscope</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/moegirlwiki/Kaleidoscope</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

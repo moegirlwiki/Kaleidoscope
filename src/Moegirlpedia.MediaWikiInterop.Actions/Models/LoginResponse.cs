@@ -6,11 +6,8 @@
 
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
+namespace Moegirlpedia.MediaWikiInterop.Actions.Models
 {
     [ApiResponse("login")]
     public class LoginResponse : IApiActionResponse

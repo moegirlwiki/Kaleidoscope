@@ -5,12 +5,12 @@
 //-----------------------------------------------------------------------
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moegirlpedia.MediaWikiInterop.Primitives.Action;
-using Moegirlpedia.MediaWikiInterop.Primitives.Action.QueryProviders;
+using Moegirlpedia.MediaWikiInterop.Actions;
+using Moegirlpedia.MediaWikiInterop.Actions.QueryProviders;
 using Moegirlpedia.MediaWikiInterop.Primitives.DependencyInjection;
 using System.Threading.Tasks;
 
-namespace PrimitiveLibraryTest.Actions
+namespace ActionLibraryTest.Actions
 {
     [TestClass]
     public class TokenQueryTest

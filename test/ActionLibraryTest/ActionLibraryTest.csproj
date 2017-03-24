@@ -2,7 +2,7 @@
 
   <PropertyGroup>    
     <TargetFramework>netcoreapp1.1</TargetFramework>    
-    <Description>Test library for primitive library.</Description>    
+    <Description>Test library for action library.</Description>    
     <Authors>Moegirlsaikou Foundation; The Little Moe New LLC</Authors>    
     <Company>Moegirlsaikou Foundation; The Little Moe New LLC</Company>    
     <Product>Project Kaleidoscope</Product>
@@ -12,10 +12,6 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Moegirlpedia.MediaWikiInterop.Actions\Moegirlpedia.MediaWikiInterop.Actions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
+
 
 </Project>

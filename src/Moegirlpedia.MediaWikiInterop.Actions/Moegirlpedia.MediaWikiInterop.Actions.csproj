@@ -1,21 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>    
-    <TargetFramework>netcoreapp1.1</TargetFramework>    
-    <Description>Test library for primitive library.</Description>    
-    <Authors>Moegirlsaikou Foundation; The Little Moe New LLC</Authors>    
-    <Company>Moegirlsaikou Foundation; The Little Moe New LLC</Company>    
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
     <Product>Project Kaleidoscope</Product>
+    <Authors>Moegirlsaikou Foundation; The Little Moe New LLC</Authors>
+    <Company>Moegirlsaikou Foundation; The Little Moe New LLC</Company>
+    <Description>API action modules for Project Kaleidoscope.</Description>
+    <Copyright>Copyright (c) 2017 Moegirlsaikou Foundation and The Little Moe New LLC. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/moegirlwiki/Kaleidoscope/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/moegirlwiki/Kaleidoscope</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/moegirlwiki/Kaleidoscope</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>MediaWiki,API,Middleware</PackageTags>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj" />
+    <ProjectReference Include="..\Moegirlpedia.MediaWikiInterop.Primitives\Moegirlpedia.MediaWikiInterop.Primitives.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,10 +32,6 @@
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
     <PackageReference Include="System.ValueTuple" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
 
 </Project>

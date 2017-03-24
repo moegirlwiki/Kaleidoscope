@@ -4,15 +4,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using Moegirlpedia.MediaWikiInterop.Actions.Query;
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
-using Moegirlpedia.MediaWikiInterop.Primitives.Foundation.Query;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Moegirlpedia.MediaWikiInterop.Primitives.Action.Models
+namespace Moegirlpedia.MediaWikiInterop.Actions.Models
 {
     [ApiResponse("query")]
     public class QueryResponse : IApiActionResponse

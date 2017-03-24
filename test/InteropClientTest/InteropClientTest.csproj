@@ -1,7 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>    
+    <Description>Test library for client.</Description>    
+    <Authors>Moegirlsaikou Foundation; The Little Moe New LLC</Authors>    
+    <Company>Moegirlsaikou Foundation; The Little Moe New LLC</Company>    
+    <Product>Project Kaleidoscope</Product>
   </PropertyGroup>
 
   <ItemGroup>

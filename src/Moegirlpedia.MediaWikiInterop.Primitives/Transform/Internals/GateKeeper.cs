@@ -12,7 +12,7 @@ using System;
 
 namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals
 {
-    class GateKeeper
+    public class GateKeeper
     {
         
         public const string ErrorKey = "error";
