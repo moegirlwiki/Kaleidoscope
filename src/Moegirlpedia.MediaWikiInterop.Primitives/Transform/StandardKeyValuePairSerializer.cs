@@ -7,6 +7,7 @@
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -46,7 +47,14 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
             {
                 // Null check
                 var pValue = property.GetValue(entity);
-                if (pValue == null) continue;
+                if (pValue == null)
+                {
+                    // Check for "Required" attribute
+                    if (property.IsDefined(typeof(RequiredAttribute)))
+                        throw new InvalidOperationException($"Required field {property.Name} is not present.");
+
+                    continue;
+                }
 
                 // Attribute
                 var pAttrib = property.GetCustomAttribute<ApiParameterAttribute>();
@@ -81,9 +89,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
                         serValue = iValue.ToString("D");
                         break;
                     case List<int> liValue:
+                        if (!liValue.Any()) continue;
                         serValue = string.Join("|", liValue.Select(i => i.ToString("D")));
                         break;
                     case List<string> lsValue:
+                        if (!lsValue.Any()) continue;
                         serValue = string.Join("|", lsValue);
                         break;
                 }
