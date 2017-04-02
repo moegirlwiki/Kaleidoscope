@@ -7,6 +7,7 @@
 using Moegirlpedia.MediaWikiInterop.Primitives.Foundation;
 using Moegirlpedia.MediaWikiInterop.Primitives.Transform.Internals;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -19,6 +20,11 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
     public class StandardResponseDeserializer<T> : IResponseDeserializer<T> where T : IApiActionResponse
     {
         public async Task<T> DeserializeResponseAsync(HttpContent input, CancellationToken ctkn)
+        {
+            return (await DeserializeResponseWithRawObjectAsync(input, ctkn)).Item1;
+        }
+
+        public async Task<(T, JToken)> DeserializeResponseWithRawObjectAsync(HttpContent input, CancellationToken ctkn)
         {
             if (input == null) throw new ArgumentNullException(nameof(input));
 
@@ -39,7 +45,7 @@ namespace Moegirlpedia.MediaWikiInterop.Primitives.Transform
                 var queryEntity = jsonEntity[querySubKey];
                 if (queryEntity == null) throw new KeyNotFoundException(GateKeeper.PayloadNotFound);
 
-                return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(queryEntity.ToString()), ctkn);
+                return await Task.Factory.StartNew(() => (JsonConvert.DeserializeObject<T>(queryEntity.ToString()), queryEntity), ctkn);
             }
         }
     }

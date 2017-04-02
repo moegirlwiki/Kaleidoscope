@@ -50,7 +50,7 @@ namespace Moegirlpedia.MediaWikiInterop.Actions
 
                     // Return fields
                     return new FormUrlEncodedContent(preSerializedFields);
-                });
+                }, ctkn);
             }
         }
     }
